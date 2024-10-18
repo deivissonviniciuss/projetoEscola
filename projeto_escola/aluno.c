@@ -41,8 +41,8 @@ int cadastrarAluno(Aluno listaAluno[], int qtdAluno) {
 
             if (sexo != 'M' && sexo != 'F') {
                 printf("Sexo inválido. Digite M ou F!\n");
-                // Limpa o buffer de entrada
-                while (getchar() != '\n'); // Para evitar que qualquer caractere residual cause problemas
+                // Limpa o buffer de entrada, para nova leitura de scanf
+                getchar();
             }
         } while (sexo != 'M' && sexo != 'F');
 
