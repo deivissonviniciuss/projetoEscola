@@ -1,7 +1,7 @@
 #ifndef ALUNO_H
 #define ALUNO_H
 
-#include "utils.h"
+#include "data.h"
 
 #define TAM_ALUNO 3     
 #define MAX_NOME 100         
@@ -34,7 +34,12 @@ typedef struct {
 int menuAluno();
 int cadastrarAluno(Aluno listaAluno[], int qtdAluno);
 void listarAluno(Aluno listaAluno[], int qtdAluno);
-int atualizarAluno(Aluno listaAluno[], int qtdAluno);
+int atualizarMatriculaAluno(Aluno listaAluno[], int qtdAluno);
+int atualizarNomeAluno(Aluno listaAluno[], int qtdAluno);
+int atualizarSexoAluno(Aluno listaAluno[], int qtdAluno);
+int atualizarCpfAluno(Aluno listaAluno[], int qtdAluno);
+int atualizarDataNascAluno(Aluno listaAluno[], int qtdAluno);
 int excluirAluno(Aluno listaAluno[], int qtdAluno);
 
 #endif
+
