@@ -14,6 +14,19 @@ int menuAluno() {
     return opcao;
 }
 
+int menuAtualizarAluno() {
+    int opcaoAtualizar;
+    printf("0 - Voltar\n");
+    printf("1 - Atualizar matrícula aluno\n");
+    printf("2 - Atualizar nome aluno\n");
+    printf("3 - Atualizar sexo aluno\n");
+    printf("4 - Atualizar cpf aluno\n");
+    printf("5 - Atualizar data de nascimento aluno\n");
+
+    scanf("%d", &opcaoAtualizar);
+    return opcaoAtualizar;
+}
+
 int cadastrarAluno(Aluno listaAluno[], int qtdAluno) {
     if (qtdAluno == TAM_ALUNO) {
         return LISTA_CHEIA;
@@ -28,6 +41,8 @@ int cadastrarAluno(Aluno listaAluno[], int qtdAluno) {
             if (listaAluno[i].matricula == matricula)
                 return MATRICULA_EXISTENTE;
         }
+
+        DataNascimento data = lerDataNascimento();
 
         int sexo;
         do {
@@ -46,9 +61,6 @@ int cadastrarAluno(Aluno listaAluno[], int qtdAluno) {
             }
         } while (sexo != 'M' && sexo != 'F');
 
-
-
-        
         // Limpar o buffer antes de usar fgets
         getchar();
 
@@ -73,6 +85,7 @@ int cadastrarAluno(Aluno listaAluno[], int qtdAluno) {
         strcpy(listaAluno[qtdAluno].nome, nome);
         listaAluno[qtdAluno].sexo = sexo;
         listaAluno[qtdAluno].ativo = TRUE;
+        listaAluno[qtdAluno].data = data;
 
         printf("Cadastro realizado com sucesso\n");
         return CAD_ALUNO_SUCESSO;
@@ -89,31 +102,140 @@ void listarAluno(Aluno listaAluno[], int qtdAluno) {
                 printf("Nome: %s\n", listaAluno[i].nome);
                 printf("CPF: %s\n", listaAluno[i].cpf);
                 printf("Sexo: %c\n", listaAluno[i].sexo);
+                printf("Data de nascimento: %d/%d/%d\n", listaAluno[i].data.dia, listaAluno[i].data.mes, listaAluno[i].data.ano);
             }
         }
     }
 }
 
-int atualizarAluno(Aluno listaAluno[], int qtdAluno) {
-    printf("Digite a matrícula do aluno:\n");
-    int matricula;
-    scanf("%d", &matricula);
-    if (matricula < 0) {
-        return MATRICULA_INVALIDA;
-    }
-    for (int i = 0; i < qtdAluno; i++) {
-        if (listaAluno[i].matricula == matricula && listaAluno[i].ativo == TRUE) {
-            printf("Digite a nova matrícula:\n");
-            int novaMatricula;
-            scanf("%d", &novaMatricula);
-            if (novaMatricula < 0) {
-                return MATRICULA_INVALIDA;
-            }
-            listaAluno[i].matricula = novaMatricula;
-            return ATUALIZACAO_ALUNO_SUCESSO;
+int atualizarMatriculaAluno(Aluno listaAluno[], int qtdAluno) {
+    if (qtdAluno == 0) {
+        printf("--Não há alunos cadastrados--\n");
+    } else {
+        printf("Digite a matrícula do aluno:\n");
+        int matricula;
+        scanf("%d", &matricula);
+        if (matricula < 0) {
+            return MATRICULA_INVALIDA;
         }
+        for (int i = 0; i < qtdAluno; i++) {
+            if (listaAluno[i].matricula == matricula && listaAluno[i].ativo == TRUE) {
+                printf("Digite a nova matrícula:\n");
+                int novaMatricula;
+                scanf("%d", &novaMatricula);
+                if (novaMatricula < 0) {
+                    return MATRICULA_INVALIDA;
+                }
+                listaAluno[i].matricula = novaMatricula;
+                return ATUALIZACAO_ALUNO_SUCESSO;
+            }
+        }
+        return MATRICULA_INEXISTENTE;
     }
-    return MATRICULA_INEXISTENTE;
+}
+
+int atualizarNomeAluno(Aluno listaAluno[], int qtdAluno) {
+    if (qtdAluno == 0) {
+        printf("--Não há alunos cadastrados--\n");
+    } else {
+        printf("Digite a matrícula do aluno:\n");
+        int matricula;
+        scanf("%d", &matricula);
+        if (matricula < 0) {
+            return MATRICULA_INVALIDA;
+        }
+        for (int i = 0; i < qtdAluno; i++) {
+            if (listaAluno[i].matricula == matricula && listaAluno[i].ativo == TRUE) {
+                getchar();  // Limpar o buffer antes de ler o nome
+                printf("Digite o novo nome:\n");
+                char novoNome[MAX_NOME];
+                fgets(novoNome, MAX_NOME, stdin);
+                novoNome[strcspn(novoNome, "\n")] = 0;  // Remove o '\n' no final da string
+
+                strcpy(listaAluno[i].nome, novoNome);
+                return ATUALIZACAO_ALUNO_SUCESSO;
+            }
+        }
+        return MATRICULA_INEXISTENTE;
+    }
+}
+
+int atualizarSexoAluno(Aluno listaAluno[], int qtdAluno) {
+    if (qtdAluno == 0) {
+        printf("--Não há alunos cadastrados--\n");
+    } else {
+        printf("Digite a matrícula do aluno:\n");
+        int matricula;
+        scanf("%d", &matricula);
+        if (matricula < 0) {
+            return MATRICULA_INVALIDA;
+        }
+        for (int i = 0; i < qtdAluno; i++) {
+            if (listaAluno[i].matricula == matricula && listaAluno[i].ativo == TRUE) {
+                char novoSexo;
+                do {
+                    printf("Digite o novo sexo do aluno (M/F):\n");
+                    getchar();  // Limpar o buffer
+                    scanf(" %c", &novoSexo);
+                    novoSexo = toupper(novoSexo); // Converte para maiúscula
+                    if (novoSexo == 'M' || novoSexo == 'F') {
+                        listaAluno[i].sexo = novoSexo;
+                        return ATUALIZACAO_ALUNO_SUCESSO;
+                    } else {
+                        printf("Sexo inválido. Digite M ou F!\n");
+                    }
+                } while (novoSexo != 'M' && novoSexo != 'F');
+            }
+        }
+        return MATRICULA_INEXISTENTE;
+    }
+}
+
+int atualizarCpfAluno(Aluno listaAluno[], int qtdAluno) {
+    if (qtdAluno == 0) {
+        printf("--Não há alunos cadastrados--\n");
+    } else {
+        printf("Digite a matrícula do aluno:\n");
+        int matricula;
+        scanf("%d", &matricula);
+        if (matricula < 0) {
+            return MATRICULA_INVALIDA;
+        }
+        for (int i = 0; i < qtdAluno; i++) {
+            if (listaAluno[i].matricula == matricula && listaAluno[i].ativo == TRUE) {
+                char novoCpf[MAX_CPF];
+                printf("Digite o novo CPF do aluno:\n");
+                getchar();  // Limpar o buffer
+                fgets(novoCpf, MAX_CPF, stdin);
+                novoCpf[strcspn(novoCpf, "\n")] = 0;  // Remove o '\n' no final da string
+
+                strcpy(listaAluno[i].cpf, novoCpf);
+                return ATUALIZACAO_ALUNO_SUCESSO;
+            }
+        }
+        return MATRICULA_INEXISTENTE;
+    }
+}
+
+int atualizarDataNascAluno(Aluno listaAluno[], int qtdAluno) {
+    if (qtdAluno == 0) {
+        printf("--Não há alunos cadastrados--\n");
+    } else {
+        printf("Digite a matrícula do aluno:\n");
+        int matricula;
+        scanf("%d", &matricula);
+        if (matricula < 0) {
+            return MATRICULA_INVALIDA;
+        }
+        for (int i = 0; i < qtdAluno; i++) {
+            if (listaAluno[i].matricula == matricula && listaAluno[i].ativo == TRUE) {
+                DataNascimento data = lerDataNascimento();
+                listaAluno[i].data = data;
+                return ATUALIZACAO_ALUNO_SUCESSO;
+            }
+        }
+        return MATRICULA_INEXISTENTE;
+    }
 }
 
 int excluirAluno(Aluno listaAluno[], int qtdAluno) {
@@ -131,4 +253,5 @@ int excluirAluno(Aluno listaAluno[], int qtdAluno) {
     }
     return MATRICULA_INEXISTENTE;
 }
+
 
