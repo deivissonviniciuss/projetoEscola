@@ -1,6 +1,8 @@
 #ifndef ALUNO_H
 #define ALUNO_H
 
+#include "utils.h"
+
 #define TAM_ALUNO 3     
 #define MAX_NOME 100         
 #define MAX_CPF 13          
@@ -18,13 +20,6 @@
 #define EXCLUSAO_ALUNO_SUCESSO -6
 #define CPF_EXISTENTE -8
 #define SEXO_INVALIDO -9
-    
-
-typedef struct {
-    int dia;
-    int mes;
-    int ano;
-} DataNascimento;
 
 typedef struct {
     int matricula;
