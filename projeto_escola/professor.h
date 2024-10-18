@@ -1,7 +1,7 @@
 #ifndef PROFESSOR_H
 #define PROFESSOR_H
 
-#include "utils.h"
+#include "data.h"
 
 #define TAM_PROFESSOR 3     
 #define MAX_NOME 100         
@@ -32,9 +32,14 @@ typedef struct {
 
 // Protótipos das funções
 int menuProfessor();
+int menuAtualizarProfessor();
 int cadastrarProfessor(Professor listaProfessor[], int qtdProfessor);
 void listarProfessor(Professor listaProfessor[], int qtdProfessor);
-int atualizarProfessor(Professor listaProfessor[], int qtdProfessor);
+int atualizarMatriculaProfessor(Professor listaProfessor[], int qtdProfessor);
+int atualizarNomeProfessor(Professor listaProfessor[], int qtdProfessor);
+int atualizarSexoProfessor(Professor listaProfessor[], int qtdProfessor);
+int atualizarCpfProfessor(Professor listaProfessor[], int qtdProfessor);
+int atualizarDataNascProfessor(Professor listaProfessor[], int qtdProfessor);
 int excluirProfessor(Professor listaProfessor[], int qtdProfessor);
 
 #endif
