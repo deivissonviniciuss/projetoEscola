@@ -58,14 +58,72 @@ int main() {
                     break;
                 }
                 case 3: {
-                    int retorno = atualizarAluno(listaAluno, qtdAluno);
-                    if (retorno == ATUALIZACAO_ALUNO_SUCESSO)
-                        printf("Aluno atualizado com sucesso\n");
-                    else if (retorno == MATRICULA_INEXISTENTE)
-                        printf("Matrícula inexistente\n");
-                    else if (retorno == MATRICULA_INVALIDA)
-                        printf("Matrícula inválida\n");
+                    printf("Atualizar aluno\n");
+                    int sairAtualizarAluno = FALSE;
+                    int opcaoAtualizarAluno;
+
+                    while (sairAtualizarAluno == FALSE) {
+                        opcaoAtualizarAluno = menuAtualizarAluno(); 
+
+                        switch (opcaoAtualizarAluno) {
+                            case 0: {
+                                sairAtualizarAluno = TRUE;
+                                break;
+                            }
+                            case 1: {
+                                int retorno = atualizarMatriculaAluno(listaAluno, qtdAluno);
+                                if (retorno == ATUALIZACAO_ALUNO_SUCESSO)
+                                    printf("Matrícula de aluno atualizada com sucesso\n");
+                                else if (retorno == MATRICULA_INEXISTENTE)
+                                    printf("Matrícula inexistente\n");
+                                else if (retorno == MATRICULA_INVALIDA)
+                                    printf("Matrícula inválida\n");
+                                break;
+                            }
+                            case 2: {
+                                int retorno = atualizarNomeAluno(listaAluno, qtdAluno);
+                                if (retorno == ATUALIZACAO_ALUNO_SUCESSO)
+                                    printf("Nome de aluno atualizado com sucesso\n");
+                                else if (retorno == MATRICULA_INEXISTENTE)
+                                    printf("Matrícula inexistente\n");
+                                else if (retorno == MATRICULA_INVALIDA)
+                                    printf("Matrícula inválida\n");
+                                break;
+                            }
+                            case 3: {
+                                int retorno = atualizarSexoAluno(listaAluno, qtdAluno);
+                                if (retorno == ATUALIZACAO_ALUNO_SUCESSO)
+                                    printf("Sexo de aluno atualizado com sucesso\n");
+                                else if (retorno == MATRICULA_INEXISTENTE)
+                                    printf("Matrícula inexistente\n");
+                                else if (retorno == MATRICULA_INVALIDA)
+                                    printf("Matrícula inválida\n");
+                                break;
+                            }
+                            case 4: {
+                                int retorno = atualizarCpfAluno(listaAluno, qtdAluno);
+                                if (retorno == ATUALIZACAO_ALUNO_SUCESSO)
+                                    printf("CPF do aluno atualizado com sucesso\n");
+                                else if (retorno == MATRICULA_INEXISTENTE)
+                                    printf("Matrícula inexistente\n");
+                                else if (retorno == MATRICULA_INVALIDA)
+                                    printf("Matrícula inválida\n");
+                                break;
+                            }
+                            case 5: {
+                                int retorno = atualizarDataNascAluno(listaAluno, qtdAluno);
+                                if (retorno == ATUALIZACAO_ALUNO_SUCESSO)
+                                    printf("Data de nascimento do aluno atualizada com sucesso\n");
+                                else if (retorno == MATRICULA_INEXISTENTE)
+                                    printf("Matrícula inexistente\n");
+                                else if (retorno == MATRICULA_INVALIDA)
+                                    printf("Matrícula inválida\n");
+                                break;
+                            }
+                        }
+                    }
                     break;
+
                 }
                 case 4: {
                     int retorno = excluirAluno(listaAluno, qtdAluno);
@@ -118,13 +176,70 @@ int main() {
                     break;
                 }
                 case 3: {
-                    int retorno = atualizarProfessor(listaProfessor, qtdProfessor);
-                    if (retorno == ATUALIZACAO_PROFESSOR_SUCESSO)
-                        printf("Professor atualizado com sucesso\n");
-                    else if (retorno == MATRICULA_INEXISTENTE)
-                        printf("Matrícula inexistente\n");
-                    else if (retorno == MATRICULA_INVALIDA)
-                        printf("Matrícula inválida\n");
+                    printf("Atualizar professor\n");
+                    int sairAtualizarProfessor = FALSE;
+                    int opcaoAtualizarProfessor;
+                    
+                    while (sairAtualizarProfessor == FALSE){
+                        opcaoAtualizarProfessor = menuAtualizarProfessor();
+                        
+                        switch (opcaoAtualizarProfessor){
+                            case 0:{
+                                sairAtualizarProfessor = TRUE;
+                                break;
+                            }
+                            case 1:{
+                                int retorno = atualizarMatriculaProfessor(listaProfessor, qtdProfessor);
+                                if (retorno == ATUALIZACAO_PROFESSOR_SUCESSO)
+                                    printf("Matrícula de professor atualizada com sucesso\n");
+                                else if (retorno == MATRICULA_INEXISTENTE)
+                                    printf("Matrícula inexistente\n");
+                                else if (retorno == MATRICULA_INVALIDA)
+                                    printf("Matrícula inválida\n");
+                                break;
+                            }
+                            case 2:{
+                                int retorno = atualizarNomeProfessor(listaProfessor, qtdProfessor);
+                                if (retorno == ATUALIZACAO_PROFESSOR_SUCESSO)
+                                    printf("Nome de professor atualizado com sucesso\n");
+                                else if (retorno == MATRICULA_INEXISTENTE)
+                                    printf("Matrícula inexistente\n");
+                                else if (retorno == MATRICULA_INVALIDA)
+                                    printf("Matrícula inválida\n");
+                                break;
+                            }
+                            case 3:{
+                                int retorno = atualizarSexoProfessor(listaProfessor, qtdProfessor);
+                                if (retorno == ATUALIZACAO_PROFESSOR_SUCESSO)
+                                    printf("Sexo de professor atualizado com sucesso\n");
+                                else if (retorno == MATRICULA_INEXISTENTE)
+                                    printf("Matrícula inexistente\n");
+                                else if (retorno == MATRICULA_INVALIDA)
+                                    printf("Matrícula inválida\n");
+                                break;
+                            }
+                            case 4:{
+                                int retorno = atualizarCpfProfessor(listaProfessor, qtdProfessor);
+                                if (retorno == ATUALIZACAO_PROFESSOR_SUCESSO)
+                                    printf("CPF do professor atualizado com sucesso\n");
+                                else if (retorno == MATRICULA_INEXISTENTE)
+                                    printf("Matrícula inexistente\n");
+                                else if (retorno == MATRICULA_INVALIDA)
+                                    printf("Matrícula inválida\n");
+                                break;
+                            }
+                            case 5:{
+                                int retorno = atualizarDataNascProfessor(listaProfessor, qtdProfessor);
+                                if (retorno == ATUALIZACAO_PROFESSOR_SUCESSO)
+                                    printf("CPF do professor atualizado com sucesso\n");
+                                else if (retorno == MATRICULA_INEXISTENTE)
+                                    printf("Matrícula inexistente\n");
+                                else if (retorno == MATRICULA_INVALIDA)
+                                    printf("Matrícula inválida\n");
+                                break;
+                            }
+                        }
+                    }
                     break;
                 }
                 case 4: {
