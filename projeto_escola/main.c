@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include "aluno.h"
 #include "professor.h"
+#include "disciplina.h"
 
 int menuGeral();
 
 int main() {
     Aluno listaAluno[TAM_ALUNO];
     Professor listaProfessor[TAM_PROFESSOR];
+    Disciplina listaDisciplina[TAM_DISCIPLINA];
     int opcao;
     int qtdAluno = 0;
     int qtdProfessor = 0;
+    int qtdDisciplina = 0;
     int sair = FALSE;
 
     // Tela inicial com as opções e leitura
@@ -257,6 +260,107 @@ int main() {
             }
             break;
         }
+
+        case 3:{
+            printf("Módulo Disciplina\n");
+            int sairDisciplina = FALSE;
+            int opcaoDisciplina;
+
+            while (sairDisciplina == FALSE) {
+                opcaoDisciplina = menuDisciplina();
+
+                switch (opcaoDisciplina) {
+                case 0: {
+                    sairDisciplina = TRUE;
+                    break;
+                }
+                case 1: {
+                    int retorno = cadastrarDisciplina(listaDisciplina, qtdDisciplina);
+                    if (retorno == LISTA_DISCIPLINA_CHEIA)
+                        printf("Lista de disciplinas cheia\n");
+                    else if (retorno == DISCIPLINA_EXISTENTE)
+                        printf("Disciplina já existente\n");
+                    else {
+                        printf("Disciplina cadastrada com sucesso\n");
+                        qtdDisciplina++;
+                    }
+                    break;
+                }
+                case 2: {
+                    listarDisciplina(listaDisciplina, qtdDisciplina);
+                    break;
+                }
+                case 3: {
+                    printf("Atualizar disciplina\n");
+                    int sairAtualizarDisciplina = FALSE;
+                    int opcaoAtualizarDisciplina;
+
+                    while (sairAtualizarDisciplina == FALSE){
+                        opcaoAtualizarDisciplina = menuAtualizarDisciplina();
+
+                        switch (opcaoAtualizarDisciplina){
+                            case 0:{
+                                sairAtualizarDisciplina = TRUE;
+                                break;
+                            }
+                            case 1:{
+                                int retorno = atualizarCodigoDisciplina(listaDisciplina, qtdDisciplina);
+                                if (retorno == ATUALIZACAO_DISCIPLINA_SUCESSO)
+                                    printf("Código da disciplina atualizado com sucesso\n");
+                                else if (retorno == DISCIPLINA_INEXISTENTE)
+                                    printf("Disciplina inexistente\n");
+                                break;
+                            }
+                            case 2:{
+                                int retorno = atualizarNomeDisciplina(listaDisciplina, qtdDisciplina);
+                                if (retorno == ATUALIZACAO_DISCIPLINA_SUCESSO)
+                                    printf("Nome da disciplina atualizado com sucesso\n");
+                                else if (retorno == DISCIPLINA_INEXISTENTE)
+                                    printf("Disciplina inexistente\n");
+                                break;
+                            }
+                            case 3:{
+                                int retorno = atualizarSemestreDisciplina(listaDisciplina, qtdDisciplina);
+                                if (retorno == ATUALIZACAO_DISCIPLINA_SUCESSO)
+                                    printf("Semestre da disciplina atualizado com sucesso\n");
+                                else if (retorno == DISCIPLINA_INEXISTENTE)
+                                    printf("Disciplina inexistente\n");
+                                break;
+                            }
+                            default: {
+                                printf("Opção inválida!\n");
+                            }
+                        }
+                    }
+                    break;
+                }
+                case 4: {
+                    int retorno = excluirDisciplina(listaDisciplina, qtdDisciplina);
+                    if (retorno == EXCLUSAO_DISCIPLINA_SUCESSO) {
+                        printf("Disciplina excluída com sucesso\n");
+                        qtdDisciplina--;
+                    } else if (retorno == DISCIPLINA_INEXISTENTE)
+                        printf("Disciplina inexistente\n");
+                    break;
+                }
+                    case 5: {
+                        int retorno = adicionarProfessorDisciplina(listaDisciplina, qtdDisciplina, listaProfessor, qtdProfessor);
+                        if (retorno == ATUALIZACAO_DISCIPLINA_SUCESSO) {
+                            printf("Professor adicionado a disciplina com sucesso\n");
+                        } else if (retorno == DISCIPLINA_INEXISTENTE)
+                            printf("Disciplina inexistente\n");
+                        else if (retorno == LISTA_CHEIA)
+                            printf("--Lista cheia--\n");
+                        else if (retorno == MATRICULA_INEXISTENTE)
+                            printf("Mátricula inexistente\n");
+                        break;
+                    }
+                }
+            }
+            break;
+        }
+        
+            
         default: {
             printf("Opção inválida!\n");
         }
