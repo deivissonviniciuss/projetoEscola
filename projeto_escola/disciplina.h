@@ -2,6 +2,7 @@
 #define DISCIPLINA_H
 
 #include "professor.h"
+#include "aluno.h"
 
 #define TAM_DISCIPLINA 10    
 #define MAX_NOME_DISCIPLINA 100
@@ -14,12 +15,15 @@
 #define DISCIPLINA_INEXISTENTE -3
 #define ATUALIZACAO_DISCIPLINA_SUCESSO -4
 #define EXCLUSAO_DISCIPLINA_SUCESSO -5
+#define DISCIPLINA_INVALIDA -6
 
 typedef struct {
     char codigo[MAX_CODIGO]; 
     char nome[MAX_NOME_DISCIPLINA]; 
     Professor listaProfessor[TAM_PROFESSOR];
     int numProfessores;
+    Aluno listaAluno[TAM_ALUNO];
+    int numAluno;
     int semestre;
     int ativo;
 } Disciplina;
@@ -33,5 +37,6 @@ int atualizarNomeDisciplina(Disciplina listaDisciplina[], int qtdDisciplina);
 int atualizarSemestreDisciplina(Disciplina listaDisciplina[], int qtdDisciplina);
 int excluirDisciplina(Disciplina listaDisciplina[], int qtdDisciplina);
 int adicionarProfessorDisciplina(Disciplina listaDisciplina[], int qtdDisciplina, Professor listaProfessor[], int qtdProfessor);
+int adicionarAlunoDisciplina(Disciplina listaDisciplina[], int qtdDisciplina, Aluno listaAluno[], int qtdAluno);
 
 #endif
