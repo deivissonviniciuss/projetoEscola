@@ -260,3 +260,4 @@ int excluirProfessor(Professor listaProfessor[], int qtdProfessor) {
     }
     return MATRICULA_INEXISTENTE;
 }
+
