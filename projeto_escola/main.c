@@ -348,11 +348,43 @@ int main() {
                         if (retorno == ATUALIZACAO_DISCIPLINA_SUCESSO) {
                             printf("Professor adicionado a disciplina com sucesso\n");
                         } else if (retorno == DISCIPLINA_INEXISTENTE)
-                            printf("Disciplina inexistente\n");
+                            printf("Não há disciplinas cadastradas\n");
+                         else if (retorno == DISCIPLINA_INVALIDA)
+                            printf("Disciplina não encontrada\n");
                         else if (retorno == LISTA_CHEIA)
                             printf("--Lista cheia--\n");
                         else if (retorno == MATRICULA_INEXISTENTE)
-                            printf("Mátricula inexistente\n");
+                            printf("Não professores cadastrados\n");
+                        else if (retorno == MATRICULA_INVALIDA)
+                            printf("Professor não encontrado\n");
+
+                        break;
+                    }
+                    case 6: {
+                        int retorno = adicionarAlunoDisciplina(listaDisciplina, qtdDisciplina, listaAluno, qtdAluno);
+                        if (retorno == ATUALIZACAO_DISCIPLINA_SUCESSO) {
+                            printf("Aluno adicionado a disciplina com sucesso\n");
+                        } else if (retorno == DISCIPLINA_INEXISTENTE)
+                            printf("Não há disciplinas cadastradas\n");
+                         else if (retorno == DISCIPLINA_INVALIDA)
+                            printf("Disciplina não encontrada\n");
+                        else if (retorno == LISTA_CHEIA)
+                            printf("--Lista cheia--\n");
+                        else if (retorno == MATRICULA_INEXISTENTE)
+                            printf("Não alunos cadastrados\n");
+                        else if (retorno == MATRICULA_INVALIDA)
+                            printf("Aluno não encontrado\n");
+
+                        break;
+                    }
+                    case 7: {
+                        int retorno = listarAlunoDisciplina(listaDisciplina, qtdDisciplina, listaAluno, qtdAluno);
+                        if (retorno == DISCIPLINA_INEXISTENTE)
+                            printf("Não há disciplinas cadastradas\n");
+                         else if (retorno == DISCIPLINA_INVALIDA)
+                            printf("Disciplina não encontrada\n");
+                        else if (retorno == LISTA_CHEIA)
+                            printf("--Lista cheia--\n");
                         break;
                     }
                 }
