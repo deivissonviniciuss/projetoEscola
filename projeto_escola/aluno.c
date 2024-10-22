@@ -14,7 +14,7 @@ int menuAluno() {
     return opcao;
 }
 
-int menuAtualizarAluno() {
+int menuAtualizarAluno() { 
     int opcaoAtualizar;
     printf("0 - Voltar\n");
     printf("1 - Atualizar matrícula aluno\n");
@@ -26,6 +26,7 @@ int menuAtualizarAluno() {
     scanf("%d", &opcaoAtualizar);
     return opcaoAtualizar;
 }
+
 
 int cadastrarAluno(Aluno listaAluno[], int qtdAluno) {
     if (qtdAluno == TAM_ALUNO) {
@@ -253,5 +254,4 @@ int excluirAluno(Aluno listaAluno[], int qtdAluno) {
     }
     return MATRICULA_INEXISTENTE;
 }
-
 
