@@ -42,4 +42,3 @@ int atualizarDataNascAluno(Aluno listaAluno[], int qtdAluno);
 int excluirAluno(Aluno listaAluno[], int qtdAluno);
 
 #endif
-
