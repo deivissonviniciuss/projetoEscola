@@ -20,6 +20,9 @@
 #define EXCLUSAO_ALUNO_SUCESSO -6
 #define CPF_EXISTENTE -8
 #define SEXO_INVALIDO -9
+#define SEM_ALUNO -10
+#define SUCESSO -11
+#define ERRO -12
 
 typedef struct {
     int matricula;
@@ -32,6 +35,7 @@ typedef struct {
 
 // Protótipos das funções
 int menuAluno();
+int menuAtualizarAluno();
 int cadastrarAluno(Aluno listaAluno[], int qtdAluno);
 void listarAluno(Aluno listaAluno[], int qtdAluno);
 int atualizarMatriculaAluno(Aluno listaAluno[], int qtdAluno);
@@ -40,5 +44,6 @@ int atualizarSexoAluno(Aluno listaAluno[], int qtdAluno);
 int atualizarCpfAluno(Aluno listaAluno[], int qtdAluno);
 int atualizarDataNascAluno(Aluno listaAluno[], int qtdAluno);
 int excluirAluno(Aluno listaAluno[], int qtdAluno);
+int listarAlunoPorSexo(Aluno listaAluno[], int qtdAluno);
 
 #endif
