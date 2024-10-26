@@ -30,6 +30,7 @@ typedef struct {
 
 // Protótipos das funções
 int menuDisciplina();
+int menuAtualizarDisciplina();
 int cadastrarDisciplina(Disciplina listaDisciplina[], int qtdDisciplina);
 void listarDisciplina(Disciplina listaDisciplina[], int qtdDisciplina);
 int atualizarCodigoDisciplina(Disciplina listaDisciplina[], int qtdDisciplina);
@@ -38,5 +39,6 @@ int atualizarSemestreDisciplina(Disciplina listaDisciplina[], int qtdDisciplina)
 int excluirDisciplina(Disciplina listaDisciplina[], int qtdDisciplina);
 int adicionarProfessorDisciplina(Disciplina listaDisciplina[], int qtdDisciplina, Professor listaProfessor[], int qtdProfessor);
 int adicionarAlunoDisciplina(Disciplina listaDisciplina[], int qtdDisciplina, Aluno listaAluno[], int qtdAluno);
+int listarAlunoDisciplina(Disciplina listaDisciplina[], int qtdDisciplina, Aluno listaAluno[], int qtdAluno);
 
 #endif
