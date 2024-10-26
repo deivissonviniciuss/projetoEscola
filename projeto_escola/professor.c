@@ -1,8 +1,10 @@
 #include <stdio.h>
-#include <string.h>  // Necessário para usar strcmp e strcpy
+#include <string.h> // Necessário para usar strcmp e strcpy
+#include <ctype.h>
 #include "professor.h"
 
 int menuProfessor() {
+    getchar();
     int opcao;
     printf("0 - Voltar\n");
     printf("1 - Cadastrar professor\n");
@@ -44,7 +46,7 @@ int cadastrarProfessor(Professor listaProfessor[], int qtdProfessor) {
 
         DataNascimento data = lerDataNascimento();
       
-        int sexo;
+        char sexo;
         do {
             printf("Digite o sexo do professor (M/F):\n");
 
